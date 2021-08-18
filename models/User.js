@@ -1,6 +1,6 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var bcrypt = require("bcrypt");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
 
 var userSchema = new Schema(
   {
@@ -11,6 +11,7 @@ var userSchema = new Schema(
     username: {
       type: "String",
       required: true,
+      unique: true,
     },
     email: {
       type: "String",
@@ -21,6 +22,12 @@ var userSchema = new Schema(
     password: {
       type: "String",
       required: true,
+    },
+    image: {
+      type: "String",
+    },
+    bio: {
+      type: "String",
     },
   },
   { timestamps: true }

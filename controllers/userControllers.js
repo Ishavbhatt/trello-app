@@ -1,5 +1,5 @@
-var User = require("../models/User");
-var jwt = require("jsonwebtoken");
+const User = require("../models/User");
+const jwt = require("jsonwebtoken");
 const { use } = require("../routes/users");
 const { token } = require("morgan");
 
@@ -30,6 +30,18 @@ module.exports = {
           res.json({ token, success: true, user });
         }
       );
+    });
+  },
+  getsingleuser: (req, res) => {
+    User.findById(req.user.userId, "-password", (err, singleuser) => {
+      if (err) return res.json({ err });
+      res.json({ singleuser, success: true });
+    });
+  },
+  getallusers: (req, res) => {
+    User.find({}, (err, users) => {
+      if (err) return res.json({ success: false, err });
+      res.json({ success: true, users });
     });
   },
 };
