@@ -23,7 +23,7 @@ mongoose.connect(
     useUnifiedTopology: true,
   },
   (err) => {
-    err ? console.log(err) : console.log("Connected to DataBase");
+    err ? console.log(err) : console.log("Connected to DBs");
   }
 );
 mongoose.set("useCreateIndex", true);
